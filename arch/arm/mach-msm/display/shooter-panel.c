@@ -429,7 +429,7 @@ static struct mipi_dsi_platform_data mipi_pdata = {
  ****** End Original Settings ***************/
 
 /*** The Settings below were recommended by Anryl 11-18-12 GG ***/
-#define BRI_SETTING_MIN		3	
+#define BRI_SETTING_MIN		1	
 #define BRI_SETTING_DEF		90
 #define BRI_SETTING_MAX		255
 

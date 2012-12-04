@@ -416,6 +416,7 @@ static struct mipi_dsi_platform_data mipi_pdata = {
 	.vsync_gpio = 28,
 	.dsi_power_save   = mipi_panel_power,
 };
+
 /********* Original Settings ****************
  ************ 11-18-12 GG *******************
 #define BRI_SETTING_MIN		1

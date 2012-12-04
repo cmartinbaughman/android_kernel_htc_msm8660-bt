@@ -418,6 +418,7 @@ static struct mipi_dsi_platform_data mipi_pdata = {
 };
 
 /*********** Original Settings *************
+ ************ 11-18-12 GG *******************
 #define BRI_SETTING_MIN		1
 #define BRI_SETTING_DEF		120
 #define BRI_SETTING_MAX		230
@@ -425,14 +426,15 @@ static struct mipi_dsi_platform_data mipi_pdata = {
 #define PWM_MIN				8
 #define PWM_DEFAULT			91
 #define PWM_MAX				232
-*********** End Original Settings **********/
+ ********** End Original Settings ***********/
 
+/*** The Settings below were recommended by Anryl 11-18-12 GG ***/
 #define BRI_SETTING_MIN		3
 #define BRI_SETTING_DEF		90
 #define BRI_SETTING_MAX		255
 
 #define PWM_MIN				7
-#define PWM_DEFAULT			25
+#define PWM_DEFAULT			75
 #define PWM_MAX				232
 
 unsigned char shrink_br = BRI_SETTING_MAX;
@@ -442,9 +444,9 @@ static unsigned char shooter_u_shrink_pwm(int val)
 
 	if (val <= 0) {
 		shrink_br = 0;
-	} else if (val > 0 && (val < BRI_SETTING_MIN)) {
-		shrink_br = PWM_MIN;
-	} else if ((val >= BRI_SETTING_MIN) && (val <= BRI_SETTING_DEF)) {
+	} else if (val > 0 && (val <= BRI_SETTING_MIN)) { // 11-19-12 GG: changed from '<' to '<=' per Anryl to provide sufficient power to wake screen
+		shrink_br = PWM_MIN+1; // 11-18-12 GG: the '+1' is the only change here, per Anryl it is needed to produce a valid value for min brightness.
+	} else if ((val > BRI_SETTING_MIN) && (val <= BRI_SETTING_DEF)) { // 11-19-12 GG: changed from '>=' to '>' per Anryl to provide sufficient power to wake panel.
 		shrink_br = (val - BRI_SETTING_MIN) * (PWM_DEFAULT - PWM_MIN) /
 			(BRI_SETTING_DEF - BRI_SETTING_MIN) + PWM_MIN;
 	} else if (val > BRI_SETTING_DEF && val <= BRI_SETTING_MAX) {

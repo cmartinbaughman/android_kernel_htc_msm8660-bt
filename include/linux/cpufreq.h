@@ -426,4 +426,6 @@ void cpufreq_frequency_table_put_attr(unsigned int cpu);
 extern unsigned int get_max_cpu_freq(void);
 #endif
 
+extern DEFINE_PER_CPU(int, cpufreq_init_done);
+
 #endif /* _LINUX_CPUFREQ_H */

@@ -124,7 +124,6 @@ struct cpu_dbs_info_s {
 	 */
 	struct mutex timer_mutex;
 };
-
 static DEFINE_PER_CPU(struct cpu_dbs_info_s, od_cpu_dbs_info);
 
 static unsigned int dbs_enable;	/* number of CPUs using this policy */

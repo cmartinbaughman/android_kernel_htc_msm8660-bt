@@ -12,7 +12,6 @@
  * 01/18/2013 - Guillermo Gutierrez guillermogutierrezjr@gmail.com
  * ---- I took this out of the one x+ source to port over to the shooter/shooter_u
  * ---- for the buttered toast kernel. I am calling it xondemand, just like chad goodman did for anthrax.
- *
  */
 
 #include <linux/kernel.h>

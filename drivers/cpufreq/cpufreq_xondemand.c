@@ -889,12 +889,11 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
             }
 
             /* NEVER less than current speed */
-            if (debug_freq < policy->cur) {
-                if (debug_load > DEF_TWO_PHASE_GO_MAX_LOAD) {
+            if (debug_freq < policy->cur)
+                if (debug_load > DEF_TWO_PHASE_GO_MAX_LOAD)
                     debug_freq = policy->max;
-                } else {
+                else
                     debug_freq = policy->cur;
-		}
 
         /* busy phase */
 		} else {
@@ -1037,9 +1036,10 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 	}
 }
 
-static void do_dbs_timer(struct work_struct *work ){
-
-	struct cpu_dbs_info_s *dbs_info = container_of(work, struct cpu_dbs_info_s, work.work);
+static void do_dbs_timer(struct work_struct *work)
+{
+	struct cpu_dbs_info_s *dbs_info =
+		container_of(work, struct cpu_dbs_info_s, work.work);
 	unsigned int cpu = dbs_info->cpu;
 	int sample_type = dbs_info->sample_type;
 
@@ -1049,7 +1049,8 @@ static void do_dbs_timer(struct work_struct *work ){
 
 	/* Common NORMAL_SAMPLE setup */
 	dbs_info->sample_type = DBS_NORMAL_SAMPLE;
-	if (!dbs_tuners_ins.powersave_bias || sample_type == DBS_NORMAL_SAMPLE) {
+	if (!dbs_tuners_ins.powersave_bias ||
+	    sample_type == DBS_NORMAL_SAMPLE) {
 		dbs_check_cpu(dbs_info);
 		if (dbs_info->freq_lo) {
 			/* Setup timer for SUB_SAMPLE */

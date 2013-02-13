@@ -140,10 +140,6 @@
 int set_two_phase_freq(int cpufreq);
 #endif
 
-#ifdef CONFIG_CPU_FREQ_GOV_XONDEMAND_2_PHASE
-int set_two_phase_freq(int cpufreq);
-#endif
-
 #ifdef CONFIG_CMDLINE_OPTIONS
 	/* setters for cmdline_gpu */
 	int set_kgsl_3d0_freq(unsigned int freq0, unsigned int freq1);
@@ -6601,10 +6597,6 @@ static void __init msm8x60_init(struct msm_board_data *board_data)
 #endif
 
 #ifdef CONFIG_CPU_FREQ_GOV_ONDEMAND_2_PHASE
-	set_two_phase_freq(1134000);
-#endif
-
-#ifdef CONFIG_CPU_FREQ_GOV_XONDEMAND_2_PHASE
 	set_two_phase_freq(1134000);
 #endif
 

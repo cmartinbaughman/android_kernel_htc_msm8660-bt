@@ -103,7 +103,7 @@ static void putstr(const char *ptr)
 void *memcpy(void *__dest, __const void *__src, size_t __n)
 {
 	int i=0;
-	unsigned char *d = (unsigned char *)__dest , *s = (unsigned char *) __src;
+	unsigned char *d = (unsigned char *)__dest , *s = (unsigned char) __src;
 	
 	for (i = __n >> 3; i > 0; i--) {
 		*d++ = *s++;
